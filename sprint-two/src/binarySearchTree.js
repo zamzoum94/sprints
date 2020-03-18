@@ -37,7 +37,15 @@ var BinarySearchTree = function(v) {
       }
     },
     depthFirstLog : function(){
+      var arr = [];
+      if(this.value !== undefined){
+       arr.push(value);
+      }
+      if(this.right !== null){
+        arr.concat(arr, right.depthFirstLog());
+      }
 
+      return arr;
     }
   }
 };
