@@ -1,26 +1,40 @@
 var BinarySearchTree = function(v) {
-  var value = v;
-  var right = null;
-  var left = null;
   return{
+    value : v,
+    right : null,
+    left : null,
     insert : function(val){
       var x = BinarySearchTree(val);
-      if(val > value){
-        if(right === null){
-          right = x;
+      if(val > this.value){
+        if(this.right === null){
+          this.right = x;
         } else{
-          right.insert(val);
+          this.right.insert(val);
         }
       }else{
-        if(left === null){
-          left = x;
+        if(this.left === null){
+          this.left = x;
         } else{
-          left.insert(val);
+          this.left.insert(val);
         }
       }
     },
-    contains : function(){
-
+    contains : function(val){
+      if(val === this.value){
+        return true;
+      } else if(val > this.value){
+        if(this.right === null){
+          return false;
+        } else{
+          return this.right.contains(val);
+        }
+      }else{
+        if(this.left === null){
+          return false;
+        } else{
+          return this.left.contains(val);
+        }
+      }
     },
     depthFirstLog : function(){
 
